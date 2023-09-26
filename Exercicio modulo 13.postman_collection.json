@@ -27,7 +27,7 @@
 					]
 				}
 			},
-			"response": []
+			"response": ["message", "Nenhum registro excluído"]
 		},
 		{
 			"name": "Busca usuario  com  ID",
@@ -67,7 +67,7 @@
 					]
 				}
 			},
-			"response": []
+			"response": ["message", "Nenhum registro excluído"]
 		},
 		{
 			"name": "Edição de Usuário ",
