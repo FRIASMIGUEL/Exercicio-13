@@ -1,167 +1,57 @@
 {
 	"info": {
-		"_postman_id": "f7585b3a-29fa-4fe4-822f-6cc155a73325",
+		"_postman_id": "3d3e1542-5461-49e9-a51e-2b174c31c1d0",
 		"name": "Exercicio modulo 13",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "29049716"
+		"_exporter_id": "29049716",
+		"_collection_link": "https://winter-station-450906.postman.co/workspace/Estudos-EBAC~430c719d-cfd6-4f87-bc7f-0645dfed2f38/collection/29049716-3d3e1542-5461-49e9-a51e-2b174c31c1d0?action=share&source=collection_link&creator=29049716"
 	},
 	"item": [
 		{
-			"name": "Funcionalidade Usuarios",
-			"item": []
-		},
-		{
-			"name": "Listar Usuários",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:3000/usuarios",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"usuarios"
-					]
-				}
-			},
-			"response": ["message", "Nenhum registro excluído"]
-		},
-		{
-			"name": "Busca usuario  com  ID",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:3000/usuarios/e02VGw9sVbQQa4bl",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"usuarios",
-						"e02VGw9sVbQQa4bl"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Exclusão de Usuário",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:3000/usuarios/HbTVHnSlp4GHyJFT",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"usuarios",
-						"HbTVHnSlp4GHyJFT"
-					]
-				}
-			},
-			"response": ["message", "Nenhum registro excluído"]
-		},
-		{
-			"name": "Edição de Usuário ",
-			"request": {
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n  \"nome\": \"Fulano\",\r\n  \"email\": \"marcos@qa.com.br\",\r\n  \"password\": \"teste\",\r\n  \"administrador\": \"true\"\r\n}\r\n",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:3000/usuarios/0uxuPY0cbmQhpEz1",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"usuarios",
-						"0uxuPY0cbmQhpEz1"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Criar Usuário",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n  \"nome\": \"Miguel\",\r\n  \"email\": \"jmfrias1950@gmail.com\",\r\n  \"password\": \"teste\",\r\n  \"administrador\": \"true\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:3000/usuarios",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"usuarios"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "login",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n  \"email\": \"jmfrias1950@gmail.com\",\r\n  \"password\": \"teste\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:3000/login",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"login"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "login com email não cadastrado",
+			"name": "Listar Usuarios",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
-							""
+							"pm.test(\"Status code é 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/usuarios",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"usuarios"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cadastro de usuario",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Cadastro realizado com sucesso\");\r",
+							"});\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});"
 						],
 						"type": "text/javascript"
 					}
@@ -172,7 +62,81 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"email\": \"jmfrias1950@ebac.com\",\r\n    \"password\": \"teste\"\r\n}\r\n",
+					"raw": "{\r\n  \"nome\": \"Gilberto da Silva\",\r\n  \"email\": \"gilberto@qa.com.br\",\r\n  \"password\": \"teste\",\r\n  \"administrador\": \"true\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/usuarios",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"usuarios"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Busca por ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code é 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/usuarios/grQ9m5m5MoGbjucG",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"usuarios",
+						"grQ9m5m5MoGbjucG"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Login realizado com sucesso\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"marcos@qa.com.br\",\r\n  \"password\": \"teste\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -194,12 +158,44 @@
 			"response": []
 		},
 		{
-			"name": "Busca de usuario com ID errado",
+			"name": "Exclusão de usuario",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code é 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
-				"method": "GET",
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
-					"raw": "http://localhost:3000/usuarios/e02VGw9sVbQQa4",
+					"raw": "http://localhost:3000/usuarios/21Es9bregxNscMVM",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -207,7 +203,142 @@
 					"port": "3000",
 					"path": [
 						"usuarios",
-						"e02VGw9sVbQQa4"
+						"21Es9bregxNscMVM"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edição de registro",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Registro alterado com sucesso\");\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n            \"nome\": \"Carlos de Costa\",\r\n            \"email\": \"Costa@qa.com.br\",\r\n            \"password\": \"teste\",\r\n            \"administrador\": \"true\"\r\n                   }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/usuarios/7FHazTrP5PoMnCQv",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"usuarios",
+						"7FHazTrP5PoMnCQv"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Exclusão com erro usuario inexistente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code é 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/usuarios/21Es9bregxNscMVM",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"usuarios",
+						"21Es9bregxNscMVM"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login com erro  email invalido",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Login realizado com sucesso\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"mmm@qa.com.br\",\r\n  \"password\": \"teste\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"login"
 					]
 				}
 			},
